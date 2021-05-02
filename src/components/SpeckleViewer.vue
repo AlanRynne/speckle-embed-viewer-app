@@ -9,6 +9,24 @@
     </div>
     <div id="renderer">
     </div>
+    <div v-if="loading" class="overlay primary d-flex flex-column align-center justify-center">
+      <v-progress-circular
+          :value="progress"
+          :size="100"
+          color="white"
+          :width="5"
+      >
+        <v-img
+            alt="Speckle Logo"
+            class="shrink"
+            contain
+            :src="require(`@/assets/img.png`)"
+            transition="scale-transition"
+            width="24"
+            height="24"
+        />
+      </v-progress-circular>
+    </div>
   </div>
 </template>
 
@@ -24,6 +42,17 @@ export default {
       this.viewer = new Viewer({container: document.getElementById('renderer')})
       this.viewer.onWindowResize()
       this.viewer.loadObject(this.url, this.token)
+      this.viewer.on( 'load-progress', args => {
+        var temp = parseInt(args.progress * 100)
+        if(temp != this.progress) {
+          console.log(`Load progress ${parseInt(args.progress * 100)} (on object ${args.id})`)
+          this.progress = temp
+          if(args.progress == 1){
+            setTimeout(()=> { this.loading = false}, 1000)
+          }
+        }
+      } )
+
     }).catch(err => {
       this.$router.replace({ path: "/error", query: {
           message: err
@@ -36,6 +65,8 @@ export default {
       latestObject: null,
       url: null,
       serverUrl: null,
+      loading: true,
+      progress: 0
     }
   },
   computed: {
@@ -98,9 +129,13 @@ export default {
   right: 0;
   bottom: 0;
   width: 100% !important;
-
 }
 
+.overlay {
+  position: fixed;
+  width: 100% !important;
+  height: 100% !important;
+}
 .viewer-container {
 
 }
