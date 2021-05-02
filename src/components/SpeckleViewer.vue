@@ -1,11 +1,11 @@
 <template>
   <div class="viewer-container fill-height d-flex">
     <div class="bottom-right pa-3 d-flex">
-      <v-btn text small color="primary" elevation="0" href="https://speckle.systems">
+      <v-btn text small color="primary" elevation="0" target="_blank" href="https://speckle.systems">
         Powered by Speckle
       </v-btn>
       <v-spacer></v-spacer>
-      <v-btn outlined small :href="url">View in Server</v-btn>
+      <v-btn outlined small :href="url" target="_blank">View in Server</v-btn>
     </div>
     <div id="renderer">
     </div>
