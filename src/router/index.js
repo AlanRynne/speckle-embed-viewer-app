@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-
+import Error from "@/views/Error";
 Vue.use(VueRouter)
 
 const routes = [
@@ -11,12 +11,26 @@ const routes = [
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
+    path: '/streams/:id',
+    name: 'Stream',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../components/SpeckleViewer.vue'),
+  },
+  {
+    path: '/streams/:id/branch/:branch',
+    name: 'Streams',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../components/SpeckleViewer.vue'),
+  },
+  {
+    path: '/error',
+    name: 'Error',
+    component: Error,
+    props: route => ({message: route.query.message})
   }
 ]
 

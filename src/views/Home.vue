@@ -1,18 +1,18 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-container fill-height class="home flex-column justify-center align-center primary--text">
+    <h1 class="mb-4">Speckle Embed Viewer App</h1>
+
+    <p> Embed any public stream (or stream you have access to) by going to the url</p>
+    <p class="text-caption">/streams/<b>STREAM_ID</b></p>
+    <p>or access the latest branch commit on</p>
+    <p class="text-caption">/streams/<b>STREAM_ID</b>/branch/<b>BRANCH_ID</b></p>
+
+  </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+  export default {
+    name: 'Home'
   }
-}
 </script>
