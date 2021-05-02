@@ -45,10 +45,10 @@ export default {
   },
   methods: {
     goToStream(url){
-      window.open(url, '_parent')
+      window.open(url, '_blank')
     },
     goToSpeckle(){
-      window.open('https://speckle.xyz', '_parent')
+      window.open('https://speckle.systems', '_blank')
     },
     fetchLatestCommit() {
       if (this.token)
