@@ -1,15 +1,8 @@
 <template>
   <div class="viewer-container fill-height d-flex">
-    <div class="top-right pa-3 d-flex">
-      <v-btn small color="primary" elevation="2" href="https://speckle.systems">
-        <v-img
-            alt="Speckle Logo"
-            contain
-            :src="require(`@/assets/img.png`)"
-            transition="scale-transition"
-            width="20"
-            height="20"
-        />
+    <div class="bottom-right pa-3 d-flex">
+      <v-btn text small color="primary" elevation="0" href="https://speckle.systems">
+        Powered by Speckle
       </v-btn>
       <v-spacer></v-spacer>
       <v-btn outlined small :href="url">View in Server</v-btn>
@@ -41,7 +34,8 @@ export default {
     return {
       viewer: null,
       latestObject: null,
-      url: null
+      url: null,
+      serverUrl: null
     }
   },
   computed: {
@@ -93,9 +87,10 @@ export default {
   width: 100% !important;
   height: 100% !important;
 }
-.top-right {
+.bottom-right {
   position: fixed;
   right: 0;
+  bottom: 0;
   width: 100% !important;
 
 }
